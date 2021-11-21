@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <style>
+            @import url(style.css);
+            p.highlight {
+                color: red;
+            }
+            svg {
+                background-color: rgb(41, 41, 36);
+            }
+            
+            .dot{
+                background-color: red;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                left: 50px;
+                top: 100px;
+            }
+
+            /* Ref[8] for z-index */
+            .bullet{
+                stroke: white;
+                stroke-width: 3;                
+                z-index: 1;
+            }
+
+            .arrowkey {
+                width:18px;
+                text-align:center;
+                border-radius:3px;
+                background-color:lightgray;
+            }
+            .highlight {
+                background-color:lime;
+            }
+
+            /* Styling for the aliens' dot */
+            /* Ref[8] for z-index */
+            .aliendot { 
+                stroke: black;
+                stroke-width: 3;
+                fill: red;
+                z-index: 2;
+            }
+
+            /* Ref[8] for z-index */
+            .aliendottest{
+                fill: red;
+                z-index: 2; 
+                width: 30;
+                height: 30;
+                border-radius: 50%;
+            }
+
+            .score {
+                color: green;
+                stroke-width: 10;
+            }
+            
+            /* Ref[10] */
+            .game-over {
+                display: none;
+                position: absolute;
+                background: #880000;
+                color: white;
+                padding: 20px 50px;
+                text-align: center;
+            }
+
+            /* Ref[10] */
+            .congratulations {
+                display: none;
+                position: absolute;
+                background: #09b617;
+                color: white;
+                padding: 20px 50px;
+                text-align: center;
+            }
+            
+            .instructions {
+                position: absolute;
+                float: right;
+                font-size: 15;
+                word-wrap: break-word;
+            }                
+
+            div#controls {
+                float: right;
+            }
+
+            
+        </style>
+        <script src="./dist/spaceinvaders.js"></script>
+    </head>
+    <body>
+        <h1>Space Invaders</h1>
+
+        <svg id = "canvas" width="700" height="600" style="background-color:rgb(0, 0, 0)">
+        
+        <g id="ship" transform="translate(350 500)">
+            <polygon points="25 75, 50 100, 0 100"
+                     style="fill:lime">
+            </polygon>
+        </g>
+
+
+        </svg> 
+
+        <!-- Ref[10] for displaying Game Over -->
+        <div class="game-over">
+            <h1>GAME OVER</h1>
+            <button id= "game-over-lose" class="btn" onclick="window.location.reload()">Restart</button>
+        </div>
+
+        <div class="congratulations">
+            <h1>CONGRATS</h1>
+            <button id = "game-over-win" class="btn" onclick="window.location.reload()">Restart</button>
+        </div>
+
+        <div id="controls">
+        <h2>Controls:</h2>
+        <table>
+            <tr><td>Turn Left</td><td><div id="leftarrow" class="arrowkey">&#8678;</div></td></tr>
+            <tr><td>Turn Right</td><td><div id="rightarrow" class="arrowkey">&#8680;</div></td></tr>
+            <tr><td>Fire</td><td><div id="space" class="arrowkey" style="width:50px">Space</div></td></tr>
+        </table>
+
+        <!-- Show the score for the player. Initially 0 -->
+        <b>Player Score</b> 
+        <p class = "score" id = "gameScore">0</p>
+
+        <!-- Show the level of current game. Initially 1-->
+        <b>Level</b> 
+        <p class = "score" id = "level">1</p>
+
+        <!-- Instructions for game -->
+        <b>Instructions:</b> 
+        <div class="instructions">
+            <p>Kill all aliens before they kill you! Use the arrow keys to move and space to fire.</p>
+            <p>There are 10 levels in the game with increasing difficulty.</p>
+        </div>
+        
+
+    </body>
+</html>
